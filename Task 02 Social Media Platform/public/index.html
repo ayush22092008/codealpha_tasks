@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulse — Modern Social Media Platform</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/feed.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+
+  <div class="app-layout">
+    <!-- Left Navigation Sidebar -->
+    <aside class="sidebar-left">
+      <div>
+        <a href="/" class="brand-row">
+          <div class="brand-logo-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </div>
+          <span class="brand-name">Pulse</span>
+        </a>
+
+        <nav class="nav-menu">
+          <a href="#" id="nav-home" class="nav-link active">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span class="nav-label">Home</span>
+          </a>
+
+          <a href="#" onclick="UI.showToast('Discovering trending posts across Pulse'); return false;" class="nav-link">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+            </svg>
+            <span class="nav-label">Explore</span>
+          </a>
+
+          <a href="#" id="nav-profile" class="nav-link">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span class="nav-label">Profile</span>
+          </a>
+        </nav>
+
+        <button id="btn-nav-compose" class="btn-sidebar-post" style="width: 100%;">
+          <span>Post</span>
+          <svg class="mobile-only-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display: none;">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- User Account Pill -->
+      <div id="sidebar-user-pill" class="sidebar-user-pill" title="Click to view profile or switch account">
+        <!-- Rendered by auth.js -->
+      </div>
+    </aside>
+
+    <!-- Center Feed Main Column -->
+    <main class="main-feed-col">
+      <!-- Sticky Feed Header -->
+      <header class="feed-header">
+        <div class="feed-title-bar">
+          <h1 class="feed-title">Home</h1>
+          <button onclick="AuthModule.openAuthModal('login')" title="Switch or Sign In" style="font-size: 0.8rem; font-weight: 600; color: var(--color-primary);">
+            Accounts
+          </button>
+        </div>
+
+        <div class="feed-tabs-row" id="home-feed-tabs">
+          <button class="feed-tab active" data-feed="for-you">For You</button>
+          <button class="feed-tab" data-feed="following">Following</button>
+        </div>
+      </header>
+
+      <!-- View 1: Home Stream View -->
+      <div id="home-feed-view">
+        <!-- Post Composer -->
+        <section class="composer-card">
+          <img 
+            id="composer-avatar" 
+            class="composer-avatar" 
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80" 
+            alt="My Avatar" 
+          />
+          <div class="composer-body">
+            <textarea 
+              id="composer-textarea" 
+              class="composer-textarea" 
+              placeholder="What is happening in your universe?"
+              maxlength="280"
+            ></textarea>
+
+            <!-- Image URL Input (Collapsible) -->
+            <div id="composer-image-input-row" class="composer-image-input-row">
+              <input 
+                type="url" 
+                id="composer-image-url" 
+                class="composer-image-url-input" 
+                placeholder="Paste image URL (Unsplash, imgur, etc.)..." 
+              />
+            </div>
+
+            <!-- Image Preview -->
+            <div id="composer-image-preview-container" class="composer-image-preview-container">
+              <img id="composer-image-preview" class="composer-image-preview" src="" alt="Preview" />
+              <button id="btn-remove-preview" class="btn-remove-preview" title="Remove photo">✕</button>
+            </div>
+
+            <div class="composer-toolbar">
+              <div class="composer-tools">
+                <button id="btn-toggle-image-input" class="tool-btn" title="Attach Image">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                  </svg>
+                </button>
+              </div>
+
+              <div class="composer-actions">
+                <span id="char-counter" class="char-counter">0/280</span>
+                <button id="btn-submit-post" class="btn-post-submit" disabled>Post</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Dynamic Feed Stream -->
+        <section id="posts-stream" class="post-list">
+          <!-- Injected via posts.js -->
+        </section>
+      </div>
+
+      <!-- View 2: User Profile View (Toggled dynamically) -->
+      <div id="profile-view-container" class="profile-view-container" style="display: none;">
+        <!-- Injected via profile.js -->
+      </div>
+    </main>
+
+    <!-- Right Widgets Sidebar -->
+    <aside class="sidebar-right">
+      <!-- Search Input -->
+      <div class="search-box">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          id="sidebar-search-input" 
+          placeholder="Search by @username..." 
+          aria-label="Search" 
+        />
+      </div>
+
+      <!-- Who to Follow Widget -->
+      <div class="widget-card">
+        <h3 class="widget-title">Who to Follow</h3>
+        <div id="who-to-follow-list" class="suggestions-list">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+
+      <!-- Trending Topics Widget -->
+      <div class="widget-card">
+        <h3 class="widget-title">Trending on Pulse</h3>
+        <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.85rem;">
+          <div>
+            <div style="font-size: 0.75rem; color: var(--color-text-muted);">Technology · Trending</div>
+            <div style="font-weight: 700;">#SQLite2026</div>
+            <div style="font-size: 0.75rem; color: var(--color-text-muted);">14.2K posts</div>
+          </div>
+          <div>
+            <div style="font-size: 0.75rem; color: var(--color-text-muted);">Development · Trending</div>
+            <div style="font-weight: 700;">#ExpressJS</div>
+            <div style="font-size: 0.75rem; color: var(--color-text-muted);">8.9K posts</div>
+          </div>
+          <div>
+            <div style="font-size: 0.75rem; color: var(--color-text-muted);">Design · Trending</div>
+            <div style="font-weight: 700;">#MicroInteractions</div>
+            <div style="font-size: 0.75rem; color: var(--color-text-muted);">5.4K posts</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="font-size: 0.75rem; color: var(--color-text-light); padding: 0 0.5rem; line-height: 1.6;">
+        © 2026 Pulse Social Inc. · CodeAlpha Internship Task 2
+      </div>
+    </aside>
+  </div>
+
+  <!-- Authentication Modal Dialog -->
+  <dialog id="auth-dialog">
+    <div class="modal-header">
+      <span style="font-weight: 800; font-size: 1.05rem;">Join Pulse</span>
+      <button id="btn-close-auth" class="modal-close-btn" aria-label="Close">✕</button>
+    </div>
+    <div class="auth-modal-body">
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" data-tab="login">Sign In</button>
+        <button class="auth-tab-btn" data-tab="register">Create Account</button>
+      </div>
+
+      <div id="auth-error-banner" class="auth-error"></div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form">
+        <div class="form-group">
+          <label class="form-label" for="login-username">Username or Email</label>
+          <input type="text" id="login-username" class="form-input" required placeholder="alexmorgan or alex@pulse.dev" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="login-password">Password</label>
+          <input type="password" id="login-password" class="form-input" required placeholder="••••••••" />
+        </div>
+        <button type="submit" class="btn-auth-submit">Sign In</button>
+
+        <!-- Fast Demo Account Switcher -->
+        <div class="demo-accounts-card">
+          <div class="demo-title">⚡ Fast One-Click Demo Switcher</div>
+          <div class="demo-users-grid">
+            <button type="button" class="btn-demo-user" onclick="AuthModule.quickDemoLogin('alexmorgan')">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80" alt="Alex" />
+              <span>@alexmorgan</span>
+            </button>
+            <button type="button" class="btn-demo-user" onclick="AuthModule.quickDemoLogin('sarah_codes')">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Sarah" />
+              <span>@sarah_codes</span>
+            </button>
+            <button type="button" class="btn-demo-user" onclick="AuthModule.quickDemoLogin('marcus_v')">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Marcus" />
+              <span>@marcus_v</span>
+            </button>
+            <button type="button" class="btn-demo-user" onclick="AuthModule.quickDemoLogin('elena_r')">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&q=80" alt="Elena" />
+              <span>@elena_r</span>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" class="auth-form" style="display: none;">
+        <div class="form-group">
+          <label class="form-label" for="register-username">Username (e.g. jordan_dev)</label>
+          <input type="text" id="register-username" class="form-input" required placeholder="jordan_dev" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="register-name">Full Name</label>
+          <input type="text" id="register-name" class="form-input" required placeholder="Jordan Smith" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="register-email">Email Address</label>
+          <input type="email" id="register-email" class="form-input" required placeholder="jordan@example.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="register-password">Password (min 6 characters)</label>
+          <input type="password" id="register-password" class="form-input" required minlength="6" placeholder="••••••••" />
+        </div>
+        <button type="submit" class="btn-auth-submit">Create Account</button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Edit Profile Modal Dialog -->
+  <dialog id="edit-profile-dialog">
+    <div class="modal-header">
+      <span style="font-weight: 800; font-size: 1.05rem;">Edit Profile</span>
+      <button id="btn-close-edit-profile" class="modal-close-btn" aria-label="Close">✕</button>
+    </div>
+    <form id="edit-profile-form" class="edit-profile-form">
+      <div class="form-group">
+        <label class="form-label" for="edit-name">Display Name</label>
+        <input type="text" id="edit-name" class="form-input" required />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="edit-bio">Bio</label>
+        <textarea id="edit-bio" class="form-input" rows="3" placeholder="Tell the world about yourself..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="edit-location">Location</label>
+        <input type="text" id="edit-location" class="form-input" placeholder="e.g. San Francisco, CA" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="edit-website">Website</label>
+        <input type="url" id="edit-website" class="form-input" placeholder="https://yourportfolio.com" />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="edit-avatar">Avatar Image URL</label>
+        <input type="url" id="edit-avatar" class="form-input" placeholder="https://..." />
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="edit-cover">Cover Banner Image URL</label>
+        <input type="url" id="edit-cover" class="form-input" placeholder="https://..." />
+      </div>
+      <button type="submit" class="btn-auth-submit" style="margin-top: 0.5rem;">Save Changes</button>
+    </form>
+  </dialog>
+
+  <!-- Toast Container -->
+  <div id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/state.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/posts.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

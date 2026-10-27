@@ -1,0 +1,354 @@
+/* Post Composer Box */
+.composer-card {
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  gap: 0.75rem;
+}
+
+.composer-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.composer-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.composer-textarea {
+  width: 100%;
+  border: none;
+  resize: none;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  outline: none;
+  color: var(--color-text-main);
+  min-height: 70px;
+}
+
+.composer-textarea::placeholder {
+  color: var(--color-text-light);
+}
+
+.composer-image-preview-container {
+  position: relative;
+  margin: 0.5rem 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  max-height: 280px;
+  display: none;
+}
+
+.composer-image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn-remove-preview {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgba(15, 23, 42, 0.75);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.composer-image-input-row {
+  display: none;
+  margin: 0.5rem 0;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.composer-image-url-input {
+  flex: 1;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+}
+
+.composer-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--color-surface-hover);
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.composer-tools {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tool-btn {
+  color: var(--color-primary);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-fast);
+}
+
+.tool-btn:hover {
+  background-color: var(--color-primary-light);
+}
+
+.composer-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.char-counter {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.btn-post-submit {
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.btn-post-submit:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-post-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Post Cards */
+.post-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-card {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  gap: 0.75rem;
+  transition: background-color var(--transition-fast);
+}
+
+.post-card:hover {
+  background-color: #fafafa;
+}
+
+.post-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.post-body {
+  flex: 1;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.post-author-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.post-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  cursor: pointer;
+}
+
+.post-name:hover {
+  text-decoration: underline;
+}
+
+.post-handle {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.post-dot {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+}
+
+.post-time {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.btn-delete-post {
+  color: var(--color-text-light);
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.btn-delete-post:hover {
+  color: var(--color-danger);
+  background-color: #fee2e2;
+}
+
+.post-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text-main);
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin-bottom: 0.75rem;
+}
+
+.post-image-attachment {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--color-border);
+}
+
+/* Post Actions (Like, Comment, Share) */
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.post-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: inherit;
+  transition: all var(--transition-fast);
+}
+
+.post-action-btn.comment-btn:hover {
+  color: var(--color-primary);
+}
+
+.post-action-btn.like-btn:hover {
+  color: var(--color-like);
+}
+
+.post-action-btn.like-btn.liked {
+  color: var(--color-like);
+}
+
+.post-action-btn.like-btn.liked svg {
+  fill: var(--color-like);
+  transform: scale(1.15);
+  animation: heartPulse 0.3s ease;
+}
+
+@keyframes heartPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1.15); }
+}
+
+/* Inline Comments Section */
+.comments-section {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-surface-hover);
+  display: none;
+}
+
+.comments-section.open {
+  display: block;
+}
+
+.comment-input-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.comment-input {
+  flex: 1;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+}
+
+.comment-input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.btn-submit-comment {
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+}
+
+.comment-item {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.85rem;
+}
+
+.comment-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comment-bubble {
+  background-color: var(--color-surface-hover);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-lg);
+  flex: 1;
+}
+
+.comment-author {
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-right: 0.35rem;
+}
+
+.empty-feed {
+  padding: 4rem 1.5rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
