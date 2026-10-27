@@ -8,7 +8,7 @@ This repository contains all assigned full-stack web development projects comple
 
 | Task | Project Name | Tech Stack | Status | Folder Link |
 |:---:|---|---|:---:|:---:|
-| **Task 1** | **Simple E-Commerce Store (Lumina)** | HTML5, CSS3, JavaScript, Express.js (Node.js), SQLite | ✅ Completed | [View Task 1 Folder](https://github.com/ayush22092008/codealpha_tasks/tree/main/Task%2001%20Ecommerce%20Store) |
+| **Task 1** | **Simple E-Commerce Store (Lumina)** | HTML5, CSS3, JavaScript, Express.js (Node.js), SQLite | ✅ Completed | [View Task 1 Folder](https://github.com/ayush22092008/codealpha_tasks/tree/main/Task-01-Ecommerce-Store) |
 | **Task 2** | **Social Media Platform (Pulse)** | HTML5, CSS3, JavaScript, Express.js (Node.js), SQLite | ✅ Completed | [View Task 2 Folder](https://github.com/ayush22092008/codealpha_tasks/tree/main/Task%2002%20Social%20Media%20Platform) |
 
 ---
@@ -23,7 +23,7 @@ A production-grade, full-stack e-commerce web application featuring:
 - **User Authentication & Dashboard**: Secure registration & login with password hashing, customer order history, and lifetime spending stats.
 - **Database**: SQLite database storing products, users, orders, order items, and reviews.
 
-📂 **Folder**: [Task 01 Ecommerce Store](https://github.com/ayush22092008/codealpha_tasks/tree/main/Task%2001%20Ecommerce%20Store)  
+📂 **Folder**: [Task-01-Ecommerce-Store](https://github.com/ayush22092008/codealpha_tasks/tree/main/Task-01-Ecommerce-Store)  
 🌐 **Local Port**: `http://localhost:3000`
 
 ---
